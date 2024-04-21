@@ -1,0 +1,12 @@
+Compilation database:
+    • bear make
+    • -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
+Regex search:
+    ^.*(module).*\n?
+
+Docker:
+    •  docker run -it --name i_use_arch_btw  --entrypoint bash archlinux:latest
+    • docker commit ffffffffffff justsave
+    • docker exec -it deploy bash
+    • docker cp rwx/ ffffffffffff:/
