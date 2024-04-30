@@ -32,3 +32,11 @@ mkdir -p $HOME/.go
 echo '# conf'                   >> ~/.bashrc
 echo 'export GOPATH=$HOME/.go'  >> ~/.bashrc
 echo "alias vi=nvim"            >> ~/.bashrc
+
+# rpmfusion
+sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf group update -y core
+
+# ffmpeg vlc
+sudo dnf install -y ffmpeg vlc libde265
