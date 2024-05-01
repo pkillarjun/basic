@@ -4,7 +4,7 @@
 sudo dnf -y update
 
 # Install basic utility
-sudo dnf install -y neovim vim-common neofetch btop wireshark tcpdump python3-pwntools chromium
+sudo dnf install -y neovim vim-common neofetch btop htop wireshark tcpdump python3-pwntools chromium
 sudo dnf install -y podman podman-compose podman-docker
 
 # Install dev toolchain
@@ -39,4 +39,4 @@ sudo dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-non
 sudo dnf group update -y core
 
 # ffmpeg vlc
-sudo dnf install -y ffmpeg vlc libde265
+sudo dnf install -y ffmpeg vlc libde265 --allowerasing
