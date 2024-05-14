@@ -40,3 +40,13 @@ sudo dnf group update -y core
 
 # ffmpeg vlc
 sudo dnf install -y ffmpeg vlc libde265 --allowerasing
+
+# Flatpak
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+flatpak install flathub com.anydesk.Anydesk
+flatpak install flathub com.valvesoftware.Steam
+
+# Other
+sudo dnf install -y libreoffice
+sudo dnf config-manager --enable fedora-cisco-openh264 -y
