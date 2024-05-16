@@ -10,3 +10,6 @@ Docker:
     • docker commit ffffffffffff justsave
     • docker exec -it deploy bash
     • docker cp rwx/ ffffffffffff:/
+
+Permission:
+    find -type f -exec chmod 644 {} \;
