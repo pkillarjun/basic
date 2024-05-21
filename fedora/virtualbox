@@ -1,0 +1,39 @@
+# Create a mok
+openssl req -new -x509 -newkey rsa:2048 -keyout MOK.priv -outform DER -out MOK.der -nodes -days 36500 -subj "/CN=$(whoami)/"
+
+# Load the mok with a Password
+sudo mokutil --import MOK.der
+
+# Reboot
+reboot
+    -> Enroll MOK
+    -> Continue
+    -> Yes
+    -> [Enter the Password from `mokutil`]
+    -> OK/reboot
+
+# Decompress modules
+sudo unxz /lib/modules/$(uname -r)/extra/VirtualBox/vboxdrv.ko.xz
+sudo unxz /lib/modules/$(uname -r)/extra/VirtualBox/vboxnetadp.ko.xz
+sudo unxz /lib/modules/$(uname -r)/extra/VirtualBox/vboxnetflt.ko.xz
+
+# Sign modules
+sudo /usr/src/kernels/$(uname -r)/scripts/sign-file sha256 MOK.priv MOK.der /lib/modules/$(uname -r)/extra/VirtualBox/vboxdrv.ko
+sudo /usr/src/kernels/$(uname -r)/scripts/sign-file sha256 MOK.priv MOK.der /lib/modules/$(uname -r)/extra/VirtualBox/vboxnetadp.ko
+sudo /usr/src/kernels/$(uname -r)/scripts/sign-file sha256 MOK.priv MOK.der /lib/modules/$(uname -r)/extra/VirtualBox/vboxnetflt.ko
+
+# Compress modules again
+sudo xz /lib/modules/$(uname -r)/extra/VirtualBox/vboxdrv.ko
+sudo xz /lib/modules/$(uname -r)/extra/VirtualBox/vboxnetadp.ko
+sudo xz /lib/modules/$(uname -r)/extra/VirtualBox/vboxnetflt.ko
+
+# Check if signing worked
+sudo unxz /lib/modules/$(uname -r)/extra/VirtualBox/vboxdrv.ko.xz
+sudo modinfo /lib/modules/$(uname -r)/extra/VirtualBox/vboxdrv.ko | grep 'signer\|sig_key\|sig_hash'
+sudo xz /lib/modules/$(uname -r)/extra/VirtualBox/vboxdrv.ko
+
+# Reboot
+sudo reboot
+
+# Check if modules are loaded
+sudo dmesg | grep -i vbox
