@@ -47,5 +47,4 @@ mkdir -p $HOME/.go
 echo '# conf'                   >> ~/.bashrc
 echo 'export GOPATH=$HOME/.go'  >> ~/.bashrc
 echo "alias vi=nvim"            >> ~/.bashrc
-alias rm="gio trash"
-
+echo 'alias rm="gio trash"'     >> ~/.bashrc
