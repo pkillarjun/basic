@@ -17,3 +17,9 @@ sudo reboot
 # END
 sudo rcvboxdrv setup
 reboot
+
+# Full screen
+Select VM-OS
+-> settings
+-> User Interface           {at the END}
+-> [Uncheck] Mini Toolbar   {in the MIDDLE}
