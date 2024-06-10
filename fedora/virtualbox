@@ -14,12 +14,10 @@ sudo reboot
     -> [Enter the Password from `mokutil`]
     -> OK/reboot
 
-# END
-sudo rcvboxdrv setup
-reboot
+sudo dnf install -y ./VirtualBox-7.0-7.0.18_162988_fedora40-1.x86_64.rpm
 
 # Full screen
 Select VM-OS
--> settings
--> User Interface           {at the END}
--> [Uncheck] Mini Toolbar   {in the MIDDLE}
+    -> settings
+    -> User Interface           {at the END}
+    -> [Uncheck] Mini Toolbar   {in the MIDDLE}
