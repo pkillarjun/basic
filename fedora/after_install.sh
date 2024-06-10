@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # Update fedora core
+sudo dnf remove -y libreoffice*
 sudo dnf -y update
 
 # Install dev toolchain
@@ -29,7 +30,7 @@ sudo dnf install -y ffmpeg vlc libde265 --allowerasing
 
 # Basic utility
 sudo dnf install -y podman podman-compose podman-docker
-sudo dnf install -y chromium wireshark python3-pwntools vim-common neovim neofetch btop htop libreoffice
+sudo dnf install -y chromium wireshark python3-pwntools vim-common neovim neofetch btop htop
 
 # Oh My Bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
