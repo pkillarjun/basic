@@ -32,6 +32,11 @@ sudo dnf install -y ffmpeg vlc libde265 --allowerasing
 sudo dnf install -y podman podman-compose podman-docker
 sudo dnf install -y chromium wireshark python3-pwntools vim-common neovim neofetch btop htop openssl qbittorrent tor torbrowser-launcher
 
+# Tor setup
+sudo systemctl enable tor
+sudo systemctl start tor
+sudo systemctl status tor
+
 # Oh My Bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
 
