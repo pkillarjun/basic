@@ -1,0 +1,11 @@
+alias vi=nvim
+alias rm="gio trash"
+
+export GOPATH=$HOME/.go
+
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+  tmux attach-session -t default || tmux new-session -s default
+fi
