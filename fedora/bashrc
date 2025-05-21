@@ -6,6 +6,11 @@ export GOPATH=$HOME/.go
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-  tmux attach-session -t default || tmux new-session -s default
+if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
+  n=1
+  while tmux has-session -t default-${n} 2>/dev/null; do
+    n=$((n+1))
+  done
+  tmux new-session -s default-${n}
 fi
+
